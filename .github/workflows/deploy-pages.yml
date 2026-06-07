@@ -46,8 +46,8 @@ jobs:
       - name: Build static export
         run: npm run build
         env:
-          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io
+          NEXT_PUBLIC_BASE_PATH: /
           NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET: ${{ vars.NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET || 'portfolio-media' }}
