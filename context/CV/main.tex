@@ -1,0 +1,231 @@
+% EDITORIAL TECH CV CONCEPT FOR OVERLEAF
+% Completely different style from previous versions
+% Focus: Web Development, DevOps, MLOps
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.25cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{ragged2e}
+\usetikzlibrary{calc}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+\setlist[itemize]{leftmargin=1.15em, itemsep=0.18em, topsep=0.18em}
+
+% ---------- COLORS ----------
+\definecolor{paper}{HTML}{FCFCFB}
+\definecolor{ink}{HTML}{111827}
+\definecolor{soft}{HTML}{4B5563}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{line}{HTML}{E5E7EB}
+\definecolor{accent}{HTML}{7C3AED}
+\definecolor{accentsoft}{HTML}{F3E8FF}
+\definecolor{accentdark}{HTML}{5B21B6}
+\definecolor{teal}{HTML}{0F766E}
+\definecolor{tealsoft}{HTML}{ECFEFF}
+\definecolor{card}{HTML}{FFFFFF}
+
+\pagecolor{paper}
+\color{ink}
+
+% ---------- TYPOGRAPHY ----------
+\titleformat{\section}
+  {\large\bfseries\color{ink}}
+  {}
+  {0pt}
+  {}
+  []
+
+\newcommand{\ruleline}{\color{line}\rule{\linewidth}{0.6pt}}
+
+\newcommand{\sectiontitle}[1]{
+  \vspace{0.55em}
+  {\large\bfseries\color{ink}#1}\\[-0.15em]
+  {\color{accent}\rule{2.4cm}{1pt}}\\[0.25em]
+}
+
+\newcommand{\entry}[4]{
+  \textbf{#1} \hfill {\color{accentdark}\small #2}\\
+  {\color{soft}#3} \hfill {\color{muted}\small #4}\\[-0.25em]
+}
+
+\newcommand{\project}[3]{
+  \textbf{#1} \hfill {\color{accentdark}\small #2}\\
+  {\color{soft}#3}\\[-0.2em]
+}
+
+\newcommand{\tag}[1]{%
+\tikz[baseline]{\node[rounded corners=6pt, fill=accentsoft, text=accentdark, inner xsep=7pt, inner ysep=4pt, font=\scriptsize\bfseries] {#1};}%
+}
+
+\newcommand{\metric}[2]{%
+\begin{tikzpicture}[baseline]
+\node[rounded corners=7pt, fill=card, draw=line, minimum width=3.1cm, minimum height=1.35cm, inner sep=6pt, align=center] {
+{\bfseries\Large\color{accentdark}#1}\\[-0.1em]{\scriptsize\color{muted}#2}};
+\end{tikzpicture}%
+}
+
+\newcommand{\mockportrait}{
+\begin{tikzpicture}
+  \fill[accentsoft] (0,0) circle (1.15);
+  \draw[accent!25, line width=1pt] (0,0) circle (1.2);
+  \fill[accent!22] (0,0.32) circle (0.30);
+  \draw[accent!22, line width=5pt, line cap=round] (-0.58,-0.62) arc[start angle=210,end angle=-30,radius=0.72];
+  \fill[teal] (-0.92,0.86) circle (0.07);
+  \fill[accent] (0.93,0.86) circle (0.06);
+\end{tikzpicture}
+}
+
+\begin{document}
+
+% ---------- BACKGROUND DECOR ----------
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[accentsoft] ([xshift=0.8cm,yshift=-0.9cm]current page.north west) circle (0.8cm);
+  \fill[tealsoft] ([xshift=-1.0cm,yshift=-1.6cm]current page.north east) circle (0.65cm);
+  \draw[accent!18, line width=0.9pt, rounded corners=8pt]
+    ([xshift=-4.4cm,yshift=1.15cm]current page.south east) --
+    ([xshift=-1.1cm,yshift=1.15cm]current page.south east) --
+    ([xshift=-1.1cm,yshift=4.0cm]current page.south east);
+  \fill[accent!30] ([xshift=-4.0cm,yshift=3.5cm]current page.south east) circle (0.08cm);
+  \fill[teal!35] ([xshift=-2.9cm,yshift=2.45cm]current page.south east) circle (0.08cm);
+\end{tikzpicture}
+
+% ---------- TOP BAND ----------
+\begin{center}
+\vspace*{0.3cm}
+\mockportrait\\[0.35em]
+{\fontsize{25}{28}\selectfont\bfseries Alex Mercer}\\[0.15em]
+{\large\color{accentdark}Web Developer \textbullet{} DevOps Engineer \textbullet{} MLOps Engineer}\\[0.45em]
+{\color{soft}\small Scalable web systems \textbar{} Cloud infrastructure \textbar{} CI/CD automation \textbar{} Production ML workflows}
+\end{center}
+
+\vspace{0.45em}
+\begin{center}
+\small
+\faEnvelope\hspace{0.35em}\href{mailto:alex.mercer.dev@mail.com}{alex.mercer.dev@mail.com}
+\hspace{1.1em}
+\faPhone\hspace{0.35em}+213 555 123 456
+\hspace{1.1em}
+\faMapMarker*\hspace{0.35em}Algiers, Algeria
+\hspace{1.1em}
+\faGithub\hspace{0.35em}\href{https://github.com/alexmercerdev}{github.com/alexmercerdev}
+\hspace{1.1em}
+\faLinkedin\hspace{0.35em}\href{https://linkedin.com/in/alexmercerdev}{linkedin.com/in/alexmercerdev}
+\end{center}
+
+\vspace{0.55em}
+\ruleline
+
+% ---------- METRICS BAND ----------
+\vspace{0.65em}
+\begin{center}
+\metric{4+}{Production Projects}
+\hspace{0.45cm}
+\metric{42\%}{Faster Deployments}
+\hspace{0.45cm}
+\metric{94}{Lighthouse Score}
+\hspace{0.45cm}
+\metric{6}{Containerized Services}
+\end{center}
+
+\vspace{0.7em}
+\begin{center}
+\tag{React}\ \tag{Next.js}\ \tag{Node.js}\ \tag{TypeScript}\ \tag{Docker}\ \tag{Kubernetes}\ \tag{Terraform}\ \tag{MLflow}\ \tag{FastAPI}\ \tag{PostgreSQL}
+\end{center}
+
+\vspace{0.75em}
+\ruleline
+
+% ---------- TWO COLUMN BODY ----------
+\begin{minipage}[t]{0.62\textwidth}
+\sectiontitle{Experience}
+\entry{DevOps \& Platform Engineering Intern}{2025 -- Present}{NovaStack Systems}{Remote}
+\begin{itemize}
+  \item Designed CI/CD pipelines with GitHub Actions and Docker, reducing deployment time by 42\%.
+  \item Containerized 6 internal services and standardized development, staging, and release environments.
+  \item Built monitoring dashboards for release reliability and operational visibility using Grafana and Prometheus.
+\end{itemize}
+
+\entry{Full-Stack Web Developer}{2024 -- 2025}{Freelance \& Academic Projects}{Algeria}
+\begin{itemize}
+  \item Developed responsive web applications using Next.js, TypeScript, and PostgreSQL.
+  \item Improved Lighthouse score from 71 to 94 through SSR optimization and front-end refactoring.
+  \item Implemented role-based authentication, admin dashboards, and external API integrations.
+\end{itemize}
+
+\sectiontitle{Selected Projects}
+\project{MLOps Pipeline for Image Classification}{2025}{FastAPI, Docker, MLflow, DVC, GitHub Actions, AWS}
+\begin{itemize}
+  \item Built an end-to-end model workflow with experiment tracking, dataset versioning, and automated retraining.
+  \item Deployed a containerized inference API with validation checks before release.
+  \item Reduced manual deployment effort by 70\% using reproducible pipelines.
+\end{itemize}
+
+\project{Kubernetes-Based Microservice Portfolio Platform}{2025}{Next.js, Node.js, Kubernetes, Nginx, Terraform}
+\begin{itemize}
+  \item Built a portfolio SaaS prototype using microservices, ingress routing, and infrastructure-as-code provisioning.
+  \item Added blue-green deployment logic and automated preview environments.
+\end{itemize}
+
+\project{Observability Dashboard for Web Services}{2024}{Grafana, Prometheus, Loki, Docker Compose}
+\begin{itemize}
+  \item Centralized logs and metrics for multi-service applications into a lightweight monitoring layer.
+  \item Created alerting rules to detect latency spikes, failed requests, and anomalies.
+\end{itemize}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.33\textwidth}
+\sectiontitle{Profile}
+{\color{soft}\small Engineer focused on scalable web products, cloud-native delivery, and production-grade ML systems. Strong interest in platform reliability, developer experience, and automation.}
+
+\sectiontitle{Education}
+\entry{Master's in Artificial Intelligence}{2024 -- 2026}{Example University of Technology}{Algeria}
+\begin{itemize}
+  \item Deep Learning, Distributed Systems, Cloud Computing.
+\end{itemize}
+
+\entry{Bachelor's in Computer Science}{2021 -- 2024}{Example Institute of Digital Sciences}{Algeria}
+\begin{itemize}
+  \item Algorithms, databases, networking, operating systems.
+\end{itemize}
+
+\sectiontitle{Technical Skills}
+{\small
+\textbf{Frontend:} React, Next.js, Tailwind CSS\\[0.25em]
+\textbf{Backend:} Node.js, Express, FastAPI\\[0.25em]
+\textbf{DevOps:} Docker, Kubernetes, CI/CD, Linux\\[0.25em]
+\textbf{MLOps:} MLflow, DVC, Airflow, model serving\\[0.25em]
+\textbf{Cloud:} AWS, GCP, Terraform\\[0.25em]
+\textbf{Data:} PostgreSQL, MongoDB, Redis
+}
+
+\sectiontitle{Certifications}
+{\small AWS Cloud Practitioner\\ Docker \& Kubernetes Fundamentals\\ MLOps Specialization}
+
+\sectiontitle{Languages}
+{\small Arabic — Native\\ French — Fluent\\ English — Professional}
+
+\sectiontitle{Highlights}
+\begin{itemize}
+  \item Top 10 in a university cloud-native project showcase.
+  \item Published technical write-ups on deployment automation.
+  \item Mentored peers on Docker and Git workflows.
+\end{itemize}
+
+\end{minipage}
+
+\end{document}

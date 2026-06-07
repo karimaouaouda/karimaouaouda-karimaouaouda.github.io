@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Karim Aouaouda Portfolio
 
-## Getting Started
+Modern static portfolio for Karim Aouaouda, focused on Laravel, mobile apps, secure production systems, CI/CD, and AI/MLOps growth.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router with static export for GitHub Pages
+- React 19, TypeScript, Tailwind CSS 4
+- GSAP community animations
+- Supabase client, migrations, and optional Edge Function contact flow
+- Vitest content tests
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm test
+npm run build
+```
 
-## Learn More
+`npm run build` exports the site to `out/`.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Copy `.env.example` to `.env.local` and fill in real Supabase values when needed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_PUBLIC_SITE_URL=https://karimaouaouda.github.io/portfolio
+NEXT_PUBLIC_BASE_PATH=/portfolio
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-public-anon-key
+NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET=portfolio-media
+NEXT_PUBLIC_SUPABASE_CONTACT_FUNCTION_URL=https://your-project-ref.functions.supabase.co/contact
+```
 
-## Deploy on Vercel
+For local development, keep `NEXT_PUBLIC_BASE_PATH` empty unless you want to test a project-pages subpath.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Supabase
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Supabase folder contains:
+
+- `supabase/migrations/20260607000000_create_portfolio_tables.sql`
+- `supabase/seed.sql`
+- `supabase/functions/contact/index.ts`
+
+Pages read projects, project case studies, contributions, learning resources, project pictures, and videos from Supabase during the static build. The migration creates a public `portfolio-media` bucket for images and videos. If Supabase is not configured or a query fails, the app falls back to local CV-derived content so GitHub Pages remains deployable.
+
+Use the Supabase CLI to link a project, run migrations, seed the CV-derived content, and deploy the optional contact Edge Function.
+
+```bash
+supabase link --project-ref your-project-ref
+supabase db push
+supabase db reset
+supabase functions deploy contact
+```
+
+Use `supabase db reset` only for a local or fresh project where resetting seeded data is acceptable. For an existing production database, apply the migration and insert/update rows manually or with your preferred seed workflow.
+
+Media fields can use either direct URLs or bucket paths:
+
+- Project main image: `projects.main_image_url` or `projects.main_image_path`
+- Project gallery: `projects.gallery` JSON with `src` or `storagePath`
+- Project video: use `projects.video_type` with `projects.video_path`, `projects.video_url`, or `projects.video_embed_code`
+- Learning videos: use `learning_resources.video_type` with `learning_resources.video_path`, `learning_resources.video_url`, or `learning_resources.video_embed_code`
+- Learning thumbnails: `learning_resources.thumbnail_url` or `learning_resources.thumbnail_path`
+
+Video modes:
+
+- `storage`: video is read from the Supabase Storage bucket path.
+- `embed`: video is rendered from stored iframe embed code, such as YouTube or Google Drive embed HTML.
+- `external` or `youtube`: video uses a direct URL.
+
+Example project storage video:
+
+```sql
+update public.projects
+set
+  video_type = 'storage',
+  video_title = 'Secure desktop walkthrough',
+  video_path = 'projects/doctolik-desktop-companion/walkthrough.mp4',
+  video_poster_path = 'projects/doctolik-desktop-companion/poster.webp'
+where slug = 'doctolik-desktop-companion';
+```
+
+Example project embedded video:
+
+```sql
+update public.projects
+set
+  video_type = 'embed',
+  video_title = 'Architecture walkthrough',
+  video_embed_code = '<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Architecture walkthrough" frameborder="0" allowfullscreen></iframe>'
+where slug = 'doctolik-desktop-companion';
+```
+
+Example `projects.gallery` item:
+
+```json
+{
+  "kind": "image",
+  "storagePath": "projects/doctolik-desktop-companion/sync-screen.webp",
+  "alt": "Doctolik synchronization screen",
+  "caption": "Offline sync and encrypted local workflow."
+}
+```
+
+## GitHub Pages
+
+The deployment workflow builds a static export and deploys `out/` to GitHub Pages. Add repository variables for Supabase values if contact persistence should be enabled in production:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET`
+- `NEXT_PUBLIC_SUPABASE_CONTACT_FUNCTION_URL`

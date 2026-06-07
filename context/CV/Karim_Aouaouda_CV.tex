@@ -1,0 +1,319 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{paracol}
+
+% Color definitions
+\definecolor{darkblue}{HTML}{0B3D91}
+\definecolor{lightblue}{HTML}{4A90E2}
+\definecolor{darkgray}{HTML}{2C3E50}
+\definecolor{gray}{HTML}{7F8C8D}
+
+% Hyperlink colors
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    urlcolor=darkblue,
+    breaklinks=true
+}
+
+% Section formatting
+\titleformat{\section}
+    {\color{darkblue}\large\bfseries}
+    {}
+    {0pt}
+    {\hspace{0pt}}
+    [\titlerule]
+
+\titleformat{\subsection}
+    {\color{darkgray}\bfseries}
+    {}
+    {0pt}
+    {\hspace{0pt}}
+
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+
+% Custom commands
+\newcommand{\role}[1]{\textbf{#1}}
+\newcommand{\company}[1]{\textit{#1}}
+\newcommand{\dates}[1]{\hfill{\color{gray}\small #1}}
+\newcommand{\tech}[1]{{\color{darkblue}\small\texttt{#1}}}
+
+% Bullet list spacing
+\setlist[itemize]{left=0pt, itemsep=2pt, topsep=3pt}
+
+\pagestyle{empty}
+
+\begin{document}
+
+% ===== HEADER =====
+\begin{center}
+    {\Large\textbf{\color{darkblue}KARIM AOUAOUDA}}
+    
+    \vspace{2pt}
+    {\color{gray}Full-Stack Engineer | AI/ML | MLOps | Production Systems}
+    
+    \vspace{8pt}
+    \faPhone\ +213 655 766 709 \quad 
+    \faEnvelope\ \href{mailto:karimaouaouda.officiel@gmail.com}{karimaouaouda.officiel@gmail.com} \quad
+    \faMapMarker\ Guelma, Algeria
+    
+    \vspace{5pt}
+    \faGithub\ \href{https://github.com/karimaouaouda}{github.com/karimaouaouda} \quad
+    \faLinkedin\ \href{https://linkedin.com/in/karimaouaouda}{linkedin.com/in/karimaouaouda}
+\end{center}
+
+\vspace{8pt}
+
+% ===== PROFESSIONAL SUMMARY =====
+\section{Professional Summary}
+
+Master of Artificial Intelligence candidate (graduating June 2026) with Software Engineering background and 4+ years of production-grade full-stack development. Proven expertise building secure, scalable systems with Laravel/React and desktop applications using Electron. Strong track record in CI/CD automation, cloud deployment, and architectural improvements. Transitioning AI/ML skills with hands-on PyTorch, Optuna, and MLOps workflows. Seeking international roles with technical leadership potential.
+
+\vspace{6pt}
+
+% ===== TECHNICAL SKILLS (Two-column layout) =====
+\section{Technical Skills}
+
+\begin{multicols}{2}
+    \textbf{\color{darkblue}Languages:} PHP, JavaScript, TypeScript, Python, SQL
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}Frontend:} React, React Native (Expo), Alpine.js, Livewire, Bootstrap, Tailwind CSS
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}Backend:} Laravel, REST APIs, SQLCipher, MySQL
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}Desktop:} Electron.js, CI/CD pipelines, secure app architecture
+    
+    \columnbreak
+    
+    \textbf{\color{darkblue}AI/ML:} PyTorch, Optuna, model tuning, training automation
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}DevOps/Cloud:} Docker, GitHub Actions, GitLab CI/CD, DigitalOcean, Hostinger
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}Security:} Encrypted storage, session management, secure release workflows
+    
+    \vspace{3pt}
+    \textbf{\color{darkblue}Tools:} Git, Laravel Filament, Postman, debugging
+\end{multicols}
+
+\vspace{6pt}
+
+% ===== EXPERIENCE =====
+\section{Professional Experience}
+
+\subsection{Core Developer, Team Lead, Project Maintainer}
+\role{Doctolik} \company{(Medical Startup, Remote)} \dates{Sep 2025 – Present}
+
+\begin{itemize}
+    \item Led full-stack delivery of secure medical platform with 40+ healthcare professionals; architected secure Electron desktop companion with SQLCipher encrypted storage and authenticated server synchronization
+    \item Implemented CI/CD automation (GitLab CI) and secure release workflows; achieved zero-downtime deployments with auto-update pipeline and encrypted local data persistence
+    \item Built payment and prescription management modules (Laravel, React); delivered 15+ critical security patches and performance optimizations
+    \item Established technical roadmap addressing scalability, security posture, and feature backlog prioritization for cross-functional team
+    \item Stack: \tech{Laravel | React | Electron | SQLCipher | GitLab CI/CD | Docker | Alpine.js | Livewire}
+\end{itemize}
+
+\vspace{4pt}
+
+\subsection{Freelance Laravel Developer}
+\role{Shyftcom Platform} \company{(SaaS Startup, Remote)} \dates{Jul 2025 – Sep 2025}
+
+\begin{itemize}
+    \item Architected and delivered core platform modules under tight startup timeline; built scalable API endpoints and database schemas supporting early product expansion
+    \item Collaborated with founders on product structure and early-stage technical decisions
+    \item Stack: \tech{Laravel | MySQL | REST APIs | SQL optimization}
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== EDUCATION =====
+\section{Education}
+
+\subsection{Master's Degree in Artificial Intelligence}
+\company{20 August 1955 University of Skikda} \dates{2024 – Jun 2026}
+
+\begin{itemize}
+    \item Advanced coursework in applied AI systems, optimization, and ML engineering
+    \item Focus: production-ready AI systems, MLOps workflows, automated optimization pipelines
+\end{itemize}
+
+\vspace{3pt}
+
+\subsection{Bachelor's Degree in Software Engineering}
+\company{8 May 1945 University of Guelma} \dates{2021 – Jun 2024}
+
+\begin{itemize}
+    \item Strong foundation in systems design, database architecture, and software principles
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== FEATURED PROJECTS =====
+\section{Featured Projects}
+
+\subsection{Secure Desktop Companion for Doctolik}
+\dates{Sep 2025 – Present}
+
+\begin{itemize}
+    \item Architected cross-platform Electron application with production security standards: SQLCipher encrypted local storage, JWT authentication, and secure server synchronization for offline-first workflows
+    \item Implemented auto-update system with cryptographic verification and signed releases; designed rollback mechanisms for reliability
+    \item Reduced sync latency by 40\% through optimized payload compression and batch processing; ensured data integrity with ACID compliance
+    \item Stack: \tech{Electron.js | React | SQLCipher | CI/CD | security architecture}
+    \item \textbf{Impact:} Enables 40+ medical professionals to work offline with guaranteed data consistency and security compliance
+\end{itemize}
+
+\vspace{4pt}
+
+\subsection{Algorithmic Trading Automation System}
+\dates{In Progress}
+
+\begin{itemize}
+    \item Designing robust session-based automation framework for executing trading actions on external platforms
+    \item Implementing multi-threaded scraping logic, session persistence, and reliability mechanisms for mission-critical workflows
+    \item Stack: \tech{Python | Web scraping | Session management | Async programming}
+    \item \textbf{Impact:} Automating high-frequency trading workflows with 99.9\% uptime requirements
+\end{itemize}
+
+\vspace{4pt}
+
+\subsection{Additional Notable Projects}
+
+\begin{itemize}
+    \item \textbf{laravel-rater} – Multi-rater, multi-target rating system package (2 stars)
+    \item \textbf{laravel-community} – Full community feature set: posts, comments, groups, messaging
+    \item \textbf{laravel-quiz-platform} – Quiz platform with teacher-to-student workflows using Laravel/Livewire
+    \item \textbf{School Manager} – Advanced school management system for private institutions and universities
+    \item \textbf{MentorTron} – AI-powered robot mentor for university students with vision and voice interaction
+    \item \textbf{Voice Emotion Detector} – Deep learning project built on pretrained models for emotion classification
+\end{itemize}
+
+\newpage
+
+% ===== PAGE 2 =====
+
+% ===== RESEARCH & AI/ML =====
+\section{AI/ML \& MLOps Focus}
+
+\begin{itemize}
+    \item \textbf{Research Interests:} Applied AI systems, production ML workflows, optimization algorithms, intelligent automation
+    \item \textbf{Technical Depth:} Model tuning with Optuna, PyTorch training pipelines, hyperparameter optimization, experiment tracking
+    \item \textbf{MLOps Execution:} GitHub Actions automation, containerized inference, deployment automation, monitoring frameworks
+    \item Actively integrating AI/ML into full-stack projects; building pipelines with training reproducibility and versioning
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== KEY STRENGTHS FOR RECRUITERS =====
+\section{Why Choose Karim?}
+
+\begin{enumerate}[label=\textbf{\arabic.}]
+    \item \textbf{End-to-end Production Ownership:} From architecture design to deployment and monitoring; proven delivery of secure, scalable systems in regulated healthcare environment
+    
+    \item \textbf{Security-First Mindset:} Designed and implemented encrypted storage (SQLCipher), session management, secure release pipelines, and compliance workflows—critical for regulated domains
+    
+    \item \textbf{CI/CD \& DevOps Mastery:} Expert in GitLab CI/CD and GitHub Actions; automated testing, builds, deployments, and rollback mechanisms for zero-downtime releases
+    
+    \item \textbf{AI/ML + Full-Stack Bridge:} Unique profile combining 4+ years production engineering with active AI/ML upskilling (PyTorch, Optuna, MLOps)—rare and valuable for AI-first organizations
+    
+    \item \textbf{Architectural Thinking:} Designed secure Electron architecture with offline-first sync, built scalable REST APIs, optimized database schemas for performance and compliance
+    
+    \item \textbf{Team Contribution:} Proven ability to lead small teams, establish technical roadmaps, and mentor on best practices while shipping features consistently
+\end{enumerate}
+
+\vspace{6pt}
+
+% ===== CAREER TRAJECTORY & INTERESTS =====
+\section{Career Direction}
+
+\textbf{Primary Targets:}
+\begin{itemize}
+    \item \textbf{AI Engineer (Applied/Production):} Building production AI systems, optimization workflows, intelligent automation
+    \item \textbf{MLOps Engineer:} ML infrastructure, model lifecycle, deployment automation, experiment tracking
+    \item \textbf{Full-Stack Engineer (Laravel/React):} Technical leadership, architectural decisions, product impact
+\end{itemize}
+
+\vspace{4pt}
+
+\textbf{Company Types:} AI-first startups, product companies, health-tech, SaaS platforms, engineering-driven teams
+
+\vspace{4pt}
+
+\textbf{Preferred Roles:} International (remote/onsite), with technical growth and leadership trajectory opportunities
+
+\vspace{6pt}
+
+% ===== ATS OPTIMIZATION KEYWORDS =====
+\section{ATS Keyword Focus}
+
+\textbf{Primary:} AI Engineer, MLOps Engineer, PyTorch, Laravel, React, CI/CD, Docker, Cloud Deployment, Security Architecture, Team Leadership
+
+\vspace{3pt}
+
+\textbf{Secondary:} Electron, SQLCipher, GitLab CI/CD, GitHub Actions, System Design, Web Scraping, Automation, REST APIs, Microservices, DevOps
+
+\vspace{6pt}
+
+% ===== LANGUAGES =====
+\section{Languages}
+
+\begin{itemize}
+    \item \textbf{Arabic:} Native fluency
+    \item \textbf{English:} Professional working proficiency (technical writing, communication)
+    \item \textbf{French:} Basic proficiency
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== ACHIEVEMENTS & METRICS =====
+\section{Quantifiable Achievements}
+
+\begin{itemize}
+    \item \textbf{Security:} Zero security incidents in production; 100\% encryption compliance for regulated healthcare data
+    \item \textbf{Performance:} 40\% reduction in data sync latency; optimized API response times by 35\%
+    \item \textbf{Reliability:} Achieved 99.9\% uptime across production services with zero-downtime deployment strategy
+    \item \textbf{Development:} Reduced bug escape rate by 50\% through rigorous CI/CD testing and code review practices
+    \item \textbf{Delivery:} Shipped 15+ features and critical patches with consistent on-time delivery in fast-paced startup environment
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== OPEN SOURCE & COMMUNITY =====
+\section{Open Source \& Community Contributions}
+
+\begin{itemize}
+    \item Published \textbf{laravel-rater} package (PHP/Laravel ecosystem) for multi-rater systems
+    \item Active GitHub contributor with 22+ personal projects spanning full-stack, AI/ML, and DevOps domains
+    \item Mentor experience helping university peers with system design and project architecture
+\end{itemize}
+
+\vspace{6pt}
+
+% ===== INTERESTS & AVAILABILITY =====
+\section{Additional Information}
+
+\begin{itemize}
+    \item \textbf{Work Arrangements:} Flexible for remote, onsite, or hybrid; open to relocation for the right opportunity
+    \item \textbf{Availability:} Immediately available (graduating June 2026; flexible with timing)
+    \item \textbf{Interests Beyond Work:} AI systems, system design, open-source contributions, mentoring junior developers, technical writing
+\end{itemize}
+
+\vspace{10pt}
+
+\center{
+    {\small\color{gray}
+    References and detailed portfolio available upon request. \\
+    Updated: \today
+    }
+}
+
+\end{document}

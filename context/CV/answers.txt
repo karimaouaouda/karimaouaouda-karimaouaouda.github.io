@@ -1,0 +1,117 @@
+Target role(s): FullStack Dev, Laravel
+
+Target companies / company type:
+
+Country / region:
+
+CV language:
+
+Length preference (1 or 2 pages):
+
+CV style (ATS-friendly / designed / balanced):
+
+Work type (internship / full-time / freelance / remote):
+
+Full name:
+
+Phone:
+
+Professional email:
+
+Location (City, Country):
+
+LinkedIn:
+
+GitHub:
+
+Portfolio website (if any):
+
+Short professional summary (3–6 lines, rough is fine):
+
+Main specialization:
+
+Strongest technical areas:
+
+Type of opportunity you want:
+
+Current profile positioning (research / engineering / balanced):
+
+Top 3 things recruiters should notice first:
+
+Education 1 - Degree title:
+
+Education 1 - University:
+
+Education 1 - City/Country:
+
+Education 1 - Start date:
+
+Education 1 - End date or expected graduation:
+
+Education 1 - GPA/grade/honors (if any):
+
+Education 1 - Relevant coursework:
+
+Education 1 - Thesis/final project:
+
+Project 1 - Name:
+
+Project 1 - Dates:
+
+Project 1 - Description:
+
+Project 1 - Your exact contribution:
+
+Project 1 - Tech stack:
+
+Project 1 - Results/metrics:
+
+Project 1 - Link (GitHub/demo/paper):
+
+Project 2 - Name:
+
+Project 2 - Dates:
+
+Project 2 - Description:
+
+Project 2 - Your exact contribution:
+
+Project 2 - Tech stack:
+
+Project 2 - Results/metrics:
+
+Project 2 - Link:
+
+Programming languages:
+
+ML/DL frameworks:
+
+CV libraries/tools:
+
+Data analysis libraries:
+
+MLOps/deployment tools:
+
+Databases:
+
+Other dev tools:
+
+Languages spoken + level (at least 1):
+
+Do you have quantified project results? (yes/no + examples):
+
+Which project should appear first:
+
+Which experience should appear first (if any):
+
+Anything you do NOT want included:
+
+Layout preference (single-column or two-column):
+
+Links style (colored or black):
+
+Header icons (yes/no):
+
+Publications section (always / only if space):
+
+Emphasize projects over experience? (yes/no):
