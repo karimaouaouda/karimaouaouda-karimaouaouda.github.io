@@ -34,8 +34,8 @@ npm run build
 Copy `.env.example` to `.env.local` and fill in real Supabase values when needed.
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://karimaouaouda.github.io/portfolio
-NEXT_PUBLIC_BASE_PATH=/portfolio
+NEXT_PUBLIC_SITE_URL=https://karimaouaouda.github.io
+NEXT_PUBLIC_BASE_PATH=
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-public-anon-key
 NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET=portfolio-media
@@ -44,7 +44,7 @@ NEXT_PUBLIC_CV_FALLBACK_URL=/cv/Karim_Aouaouda_CV.pdf
 NEXT_PUBLIC_SUPABASE_CONTACT_FUNCTION_URL=https://your-project-ref.functions.supabase.co/contact
 ```
 
-For local development, keep `NEXT_PUBLIC_BASE_PATH` empty unless you want to test a project-pages subpath.
+Keep `NEXT_PUBLIC_BASE_PATH` empty for the root GitHub Pages site at `https://karimaouaouda.github.io`.
 
 ## Supabase
 
@@ -126,7 +126,11 @@ where config_key = 'cv_path';
 
 ## GitHub Pages
 
-The deployment workflow builds a static export and deploys `out/` to GitHub Pages. Add repository variables for Supabase values if contact persistence should be enabled in production:
+The deployment workflow builds a static export and deploys `out/` to GitHub Pages without a base path, so links and assets target `https://karimaouaouda.github.io`.
+
+For GitHub Pages to serve this directly at the root domain, the repository must be named exactly `karimaouaouda.github.io` and Pages must use GitHub Actions as the source. A repository named anything else, such as `karimaouaouda-karimaouaouda.github.io`, will be served under a project path unless you rename it or use a custom domain.
+
+Add repository variables for Supabase values if contact persistence should be enabled in production:
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
