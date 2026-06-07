@@ -25,6 +25,7 @@ export function ActionLink({
   className,
   target,
   rel,
+  download,
   dataHero,
 }: {
   href: string;
@@ -35,6 +36,7 @@ export function ActionLink({
   className?: string;
   target?: string;
   rel?: string;
+  download?: boolean | string;
   dataHero?: boolean;
 }) {
   const resolvedIconPosition = iconPosition ?? (variant === "back" ? "left" : "right");
@@ -47,7 +49,7 @@ export function ActionLink({
   );
   const classes = cn(variants[variant], className);
 
-  if (isInternalHref(href)) {
+  if (isInternalHref(href) && !download) {
     return (
       <Link className={classes} href={href} data-hero={dataHero ? true : undefined}>
         {content}
@@ -56,7 +58,14 @@ export function ActionLink({
   }
 
   return (
-    <a className={classes} href={href} target={target} rel={rel} data-hero={dataHero ? true : undefined}>
+    <a
+      className={classes}
+      href={href}
+      target={target}
+      rel={rel}
+      download={download}
+      data-hero={dataHero ? true : undefined}
+    >
       {content}
     </a>
   );

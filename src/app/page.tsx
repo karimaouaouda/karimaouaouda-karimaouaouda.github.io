@@ -27,10 +27,10 @@ import {
   skills,
   stats,
 } from "@/lib/portfolio-data";
-import { getContributions, getProjects } from "@/lib/supabase-content";
+import { getContributions, getCvAsset, getProjects } from "@/lib/supabase-content";
 
 export default async function Home() {
-  const [projects, contributions] = await Promise.all([getProjects(), getContributions()]);
+  const [projects, contributions, cvAsset] = await Promise.all([getProjects(), getContributions(), getCvAsset()]);
   const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
 
   return (
@@ -64,6 +64,9 @@ export default async function Home() {
               <div data-hero className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <ActionLink href="/projects" variant="primary" icon={ArrowRight}>
                   See projects
+                </ActionLink>
+                <ActionLink href={cvAsset.href} variant="secondary" icon={Download} download={cvAsset.filename}>
+                  {cvAsset.label}
                 </ActionLink>
                 <ActionLink href={`mailto:${profile.email}`} variant="secondary" icon={Mail}>
                   Contact me

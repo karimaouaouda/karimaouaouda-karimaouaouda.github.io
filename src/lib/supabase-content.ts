@@ -8,6 +8,7 @@ import {
   type Project,
   type ProjectVideo,
 } from "./portfolio-data";
+import { withBasePath } from "./site";
 
 type ProjectRow = {
   slug: string;
@@ -64,9 +65,24 @@ type ContributionRow = {
   link: string | null;
 };
 
+type PortfolioConfigRow = {
+  config_key: string;
+  config_value: string;
+};
+
+export type CvAsset = {
+  href: string;
+  label: string;
+  filename: string;
+  source: "supabase" | "fallback";
+};
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const mediaBucket = process.env.NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET || "portfolio-media";
+const defaultCvBucket = process.env.NEXT_PUBLIC_SUPABASE_CV_BUCKET || "portfolio-cv";
+const fallbackCvUrl = process.env.NEXT_PUBLIC_CV_FALLBACK_URL || "/cv/Karim_Aouaouda_CV.pdf";
+const fallbackCvFilename = "Karim_Aouaouda_CV.pdf";
 
 function createPortfolioClient() {
   if (!supabaseUrl || !supabaseAnonKey) {
@@ -93,6 +109,19 @@ function getStorageUrl(path?: string | null) {
 
 function resolveMediaUrl(url?: string | null, storagePath?: string | null, fallback = "/karim-engineering-hero.png") {
   return url || getStorageUrl(storagePath) || fallback;
+}
+
+function getConfigValue(rows: PortfolioConfigRow[], key: string) {
+  return rows.find((row) => row.config_key === key)?.config_value;
+}
+
+function getFallbackCvAsset(): CvAsset {
+  return {
+    href: withBasePath(fallbackCvUrl),
+    label: "Download CV",
+    filename: fallbackCvFilename,
+    source: "fallback",
+  };
 }
 
 function mapProject(row: ProjectRow): Project {
@@ -261,4 +290,40 @@ export async function getContributions(): Promise<Contribution[]> {
   }
 
   return (data ?? []).map((row) => mapContribution(row as ContributionRow));
+}
+
+export async function getCvAsset(): Promise<CvAsset> {
+  if (!client) {
+    return getFallbackCvAsset();
+  }
+
+  const { data, error } = await client
+    .from("portfolio_config")
+    .select("config_key,config_value")
+    .eq("is_public", true)
+    .in("config_key", ["cv_bucket", "cv_path", "cv_url", "cv_filename", "cv_label"]);
+
+  if (error) {
+    console.warn("Supabase CV config fetch failed. Falling back to local CV asset.", error.message);
+    return getFallbackCvAsset();
+  }
+
+  const rows = (data ?? []) as PortfolioConfigRow[];
+  const publicUrl = getConfigValue(rows, "cv_url");
+  const bucket = getConfigValue(rows, "cv_bucket") || defaultCvBucket;
+  const path = getConfigValue(rows, "cv_path");
+  const filename = getConfigValue(rows, "cv_filename") || fallbackCvFilename;
+  const label = getConfigValue(rows, "cv_label") || "Download CV";
+  const href = publicUrl || (path ? client.storage.from(bucket).getPublicUrl(path).data.publicUrl : undefined);
+
+  if (!href) {
+    return getFallbackCvAsset();
+  }
+
+  return {
+    href,
+    label,
+    filename,
+    source: "supabase",
+  };
 }

@@ -42,4 +42,11 @@ yarn-error.log*
 next-env.d.ts
 
 
-/supabase
+/supabase/.temp/
+!/supabase/
+!/supabase/config.toml
+!/supabase/seed.sql
+!/supabase/migrations/
+!/supabase/migrations/*.sql
+!/supabase/functions/
+!/supabase/functions/**

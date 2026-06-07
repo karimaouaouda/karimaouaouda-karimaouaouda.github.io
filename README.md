@@ -39,6 +39,8 @@ NEXT_PUBLIC_BASE_PATH=/portfolio
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-public-anon-key
 NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET=portfolio-media
+NEXT_PUBLIC_SUPABASE_CV_BUCKET=portfolio-cv
+NEXT_PUBLIC_CV_FALLBACK_URL=/cv/Karim_Aouaouda_CV.pdf
 NEXT_PUBLIC_SUPABASE_CONTACT_FUNCTION_URL=https://your-project-ref.functions.supabase.co/contact
 ```
 
@@ -52,7 +54,7 @@ The Supabase folder contains:
 - `supabase/seed.sql`
 - `supabase/functions/contact/index.ts`
 
-Pages read projects, project case studies, contributions, learning resources, project pictures, and videos from Supabase during the static build. The migration creates a public `portfolio-media` bucket for images and videos. If Supabase is not configured or a query fails, the app falls back to local CV-derived content so GitHub Pages remains deployable.
+Pages read projects, project case studies, contributions, learning resources, project pictures, videos, and the CV download location from Supabase during the static build. The migrations create a public `portfolio-media` bucket for images/videos and a public `portfolio-cv` bucket for the CV file. If Supabase is not configured or a query fails, the app falls back to local CV-derived content and `public/cv/Karim_Aouaouda_CV.pdf` so GitHub Pages remains deployable.
 
 Use the Supabase CLI to link a project, run migrations, seed the CV-derived content, and deploy the optional contact Edge Function.
 
@@ -72,6 +74,7 @@ Media fields can use either direct URLs or bucket paths:
 - Project video: use `projects.video_type` with `projects.video_path`, `projects.video_url`, or `projects.video_embed_code`
 - Learning videos: use `learning_resources.video_type` with `learning_resources.video_path`, `learning_resources.video_url`, or `learning_resources.video_embed_code`
 - Learning thumbnails: `learning_resources.thumbnail_url` or `learning_resources.thumbnail_path`
+- CV download: upload `Karim_Aouaouda_CV.pdf` to the `portfolio-cv` bucket and keep `portfolio_config.cv_path` set to that storage path.
 
 Video modes:
 
@@ -113,6 +116,14 @@ Example `projects.gallery` item:
 }
 ```
 
+Example CV config update:
+
+```sql
+update public.portfolio_config
+set config_value = 'Karim_Aouaouda_CV.pdf'
+where config_key = 'cv_path';
+```
+
 ## GitHub Pages
 
 The deployment workflow builds a static export and deploys `out/` to GitHub Pages. Add repository variables for Supabase values if contact persistence should be enabled in production:
@@ -120,4 +131,6 @@ The deployment workflow builds a static export and deploys `out/` to GitHub Page
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `NEXT_PUBLIC_SUPABASE_MEDIA_BUCKET`
+- `NEXT_PUBLIC_SUPABASE_CV_BUCKET`
+- `NEXT_PUBLIC_CV_FALLBACK_URL`
 - `NEXT_PUBLIC_SUPABASE_CONTACT_FUNCTION_URL`
